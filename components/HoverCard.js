@@ -17,7 +17,7 @@ const HoverCard = ({ src, title, content, link }) => {
     }
   };
 
-const openModal = () => {
+  const openModal = () => {
     setIsModalOpen(true);
   };
 
@@ -36,7 +36,7 @@ const openModal = () => {
       {/* Small Card */}
       <div className="card my-12" style={{ width: "25rem", cursor: "pointer" }} onClick={openModal}>
         <div className="card-body">
-          <Image className="card-img-top" src={`http://localhost:3001/proxy_image?url=${encodeURIComponent(src)}`} alt="Card img cap" width={150} height={200}/>
+          <Image className="card-img-top" src={`http://localhost:3001/proxy_image?url=${encodeURIComponent(src)}`} alt="Card img cap" width={150} height={200} />
           <h5 className="card-title" style={{ color: 'black', fontSize: '1.2rem', fontWeight: 'bold' }}>{title}</h5>
           {/* <p className="card-text" style={{ color: 'gray' }}>{content}</p> */}
         </div>
@@ -89,6 +89,12 @@ const styles = {
     width: '80%',
     zIndex: 10,
     position: 'relative',
+  }
+};
+const hoverCardStyle = {
+  ':hover': {
+    transform: 'scale(1.05)', // Slightly enlarge the card
+    boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)', // Stronger shadow on hover
   }
 };
 
