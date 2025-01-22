@@ -28,7 +28,7 @@ export default function SignupPage() {
         setPasserr(null);
 
         if (!validateUsername(username)) {
-            setUsrerr('Username must be between 3 and 15 characters.');
+            setUsrerr('Username must be between 5 and 15 characters.');
             return;
         }
 
