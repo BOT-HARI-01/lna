@@ -1,0 +1,169 @@
+/* /* .sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #222831;
+    border-right: 1px solid #31363F;
+    color: #ecf0f1;
+    padding: 20px;
+    position: fixed;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .navList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .navList li {
+    margin: 15px 0;
+  }
+  
+  .navList li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+  }
+  
+  .navList li a:hover {
+    color: #3498db;
+  }
+
+  .toggleButton{
+    display: none;
+    position: absolute;
+    top: 20px;
+    left:10px;
+    right: 1px; 
+    background-color: transparent;
+    border: none;
+    color: #ecf0f1;
+    font-size: 20px;
+    cursor:pointer;
+  }
+  .toggleButton {
+      display: block; 
+}
+  @media (max-width: 768px) {
+  .SidebarClosed {
+    width: 50px; 
+}
+}*/ 
+
+.sidebar {
+  width: 250px;
+  /* height: 100vh; */
+  height: calc(100vh - 60px);
+  background-color: #ffffff;
+  border-right: 1px solid #d4d6db;
+  color: #f6f5f5;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebarClosed {
+  width: 80px; /* Adjust based on icon size */
+  height: 100vh;
+  background-color: #fefefe;
+  border-right: 1px solid #d4d6db;
+  color: #ecf0f1;
+  transition: width 0.3s;
+  overflow: hidden;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+}
+
+.navList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navList li {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navList li a {
+  text-decoration: none;
+  color: #3c3f3f;
+  display: flex;
+  align-items: center;
+}
+
+.navList li i {
+  font-size: 20px;
+  margin-right: 15px; 
+}
+
+.sidebarClosed .navList li i {
+  margin: 0; 
+}
+
+.linkText {
+  display: inline;
+}
+
+.sidebarClosed .linkText {
+  display: none;
+}
+
+/* Toggle Button */
+.toggleButton {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: rgb(148, 67, 67);
+  cursor: pointer;
+  margin: 10px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .sidebarClosed {
+    width: 80px; 
+    height: 100vh;
+    background-color: #222831;
+    border-right: 1px solid #31363F;
+    color: #ecf0f1;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar {
+    position: fixed;
+    z-index: 1000; 
+  }
+}
+
+
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #333; /* Adjust to match your sidebar theme */
+  border-bottom: 1px solid #444; /* Optional: separator line */
+}
+
+.sidebarClosed .sidebarHeader {
+  justify-content: center; /* Center the shortened header when sidebar is closed */
+  font-size: 1.2rem; /* Adjust font size for compact view */
+}
