@@ -20,7 +20,7 @@
 
         ]}
         return (
-            <div>
+            <div className='theContainer'>
                 {/* <p>Test tags page</p>/ */}
                 {allTags.map((category,index)=>(
                     <div key={index}>

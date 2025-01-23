@@ -72,7 +72,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="theContainer">
       {/* Toast container for displaying toast notifications */}
       <ToastContainer />
 

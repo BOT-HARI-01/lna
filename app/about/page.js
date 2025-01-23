@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div style={{ padding: "20px", maxWidth: "800px", margin: "auto", lineHeight: "1.6", fontFamily: "Arial, sans-serif" }}>
+        <div className="theContainer" style={{ padding: "20px", lineHeight: "1.6", fontFamily: "Arial, sans-serif" }}>
             <h1 style={{ textAlign: "center", marginBottom: "20px" }}>About This Project</h1>
             
             <h2>Why</h2>
