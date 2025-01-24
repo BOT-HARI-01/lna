@@ -1,19 +1,25 @@
 'use client'
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import Styles from './header.module.css';
-export default function Header({ isScrolled }) {
+import { useState } from "react";
+export default function Header() {
+    const [activeLnk, setActive] = useState('');
+
+    const handleActive = (tagname) =>{
+        setActive(tagname);
+    };
     return (
         <div className={Styles.headerDiv}>
             {/* <div className={Styles.curved}></div> */}
             <aside className={Styles.sidebar}>
                 <div className={Styles.verticalButtons}>
-                    <Link href='/selectTags'>Tags</Link>
-                    <Link href='/login'>Sign in</Link>
-                    <Link href='/signup'>Sign up</Link>
+                    <Link href='/selectTags' className={activeLnk === 'tags' ? Styles.active:''} onClick={() => handleActive('tags')}>Tags</Link>
+                    <Link href='/login' className={activeLnk === 'login' ? Styles.active :''} onClick={() => handleActive('login')}>Sign in</Link>
+                    <Link href='/signup' className={activeLnk === 'signup' ? Styles.active :''} onClick={() => handleActive('signup')}>Sign up</Link>
                 </div>
             </aside>
-            <header className={`${Styles.header} ${isScrolled ? '' : ''}`}>
+            <header className={Styles.header}>
                 <nav className={Styles.navList}>
                     <ul className={Styles.leftNav}>
                         <li>
@@ -24,11 +30,11 @@ export default function Header({ isScrolled }) {
                         </li>
                     </ul>
                     <ul className={Styles.rightNav}>
-                        <li><Link href='/'>Home</Link></li>
-                        <li><Link href='/about'>About</Link></li>
-                        <li><Link href='/features'>Features</Link></li>
-                        <li><Link href='/login'>Sign in</Link></li>
-                        <li><Link href='/signup'>Sign up</Link></li>
+                        <li><Link href='/' className={activeLnk === 'home' ? Styles.active :''} onClick={() => handleActive('home')}>Home</Link></li>
+                        <li><Link href='/about' className={activeLnk === 'about' ? Styles.active :''} onClick={() => handleActive('about')}>About</Link></li>
+                        <li><Link href='/features'className={activeLnk === 'features' ? Styles.active :''} onClick={() => handleActive('features')}>Features</Link></li>
+                        <li><Link href='/login' className={activeLnk === 'login' ? Styles.active :''} onClick={() => handleActive('login')}>Sign in</Link></li>
+                        <li><Link href='/signup' className={activeLnk === 'signup' ? Styles.active :''} onClick={() => handleActive('signup')}>Sign up</Link></li>
                     </ul>
                 </nav>
             </header>

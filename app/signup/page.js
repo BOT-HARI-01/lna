@@ -1,10 +1,10 @@
 'use client'
+import './signup.css';
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './signup.css'
-import { useRouter } from 'next/navigation';
 
 export default function SignupPage() {
   const [username, setUsername] = useState('');

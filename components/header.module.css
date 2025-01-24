@@ -1,23 +1,20 @@
-.header{
+.header {
     display: flex;
     padding: 0px;
-    /* margin-top: 0; */
     justify-content: space-between;
     align-items: center;
-    position: fixed; 
-    /* width: calc(100% - 64px);  */
+    position: fixed;
     width: 100%;
-    top: 0; 
+    top: 0;
     height: 70px;
     left: 0;
     z-index: 100;
-    /* box-shadow: 9px 1px 10px rgba(0, 0, 0, 0.1); */
     background-color: white;
     transition: box-shadow 0.3s ease;
     border-top-left-radius: 150px;
 }
 
-.navList{
+.navList {
     margin-left: 20px;
     margin-top: 30px;
     display: flex;
@@ -26,19 +23,19 @@
     gap: 10px;
 }
 
-.leftNav{
+.leftNav {
     display: flex;
     list-style: none;
 }
 
 /* In next js even using the LINK tag it internally renders to <a>, so we mention <a>*/
 
-.leftNav li a{
+.leftNav li a {
     text-decoration: none;
     margin-right: 1rem;
 }
 
-.rightNav{
+.rightNav {
     display: flex;
     list-style: none;
     margin-left: auto;
@@ -47,19 +44,20 @@
     right: 20px;
 }
 
-.rightNav li button{
+.rightNav li button {
     margin-left: 20px;
 }
 
-.rightNav li button:hover{
+.rightNav li button:hover {
     color: #B8860B;
 }
-.rightNav li a{
+
+.rightNav li a {
     text-decoration: none;
     margin-left: 1.5rem;
 }
 
-.rightNav li a:hover{
+.rightNav li a:hover {
     color: #B8860B;
 }
 
@@ -74,16 +72,13 @@
     top: 0;
     left: 0;
     width: 70px;
-    height:100vh;
+    height: 100vh;
     background-color: #ffffff;
-    /* border-right: 1px #000 solid; */
     z-index: 99;
     display: flex;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 20px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    /* background-color: white; */
     transition: box-shadow 0.3s ease;
 }
 
@@ -101,10 +96,14 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #444;
+    
 }
 
 .verticalButtons button:hover,
 .verticalButtons a:hover {
+    color: #B8860B;
+}
+
+.active {
     color: #B8860B;
 }

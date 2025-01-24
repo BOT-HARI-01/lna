@@ -2,49 +2,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     max-width: 100%;
 }
 
-/* Style the signup box */
 .signup-box {
     background-color: white;
-    padding: 24px;
+    padding: 16px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;
-    max-height: 800px;
+    max-width: 400px;
+    max-height: 600px;
     margin-top: 25px;
 }
 
-/* Title for the signup page */
 .signup-title {
     text-align: center;
-    font-size: 35px;
+    font-size: 28px;
     font-weight: bold;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     color: black;
 }
 
-/* Style for input groups */
 .input-group {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .input-label {
     display: block;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: #4a4a4a;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .input-field {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     border: 1px solid #ccc;
-    font-size: 20px;
+    font-size: 16px;
     outline: none;
 }
 
@@ -53,16 +49,15 @@
     box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.3);
 }
 
-/* Style for submit button */
 .submit-button {
-    margin-top: 15px;
+    margin-top: 12px;
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     background-color: grey;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 20px;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -74,40 +69,42 @@
     background-color: #2b6cb0;
 }
 
-/* Style for the bottom section (e.g., links to login or other pages) */
 .bottom {
-    margin-top: 30px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
 }
-.bottom-p{
+
+.bottom-p {
     color: black;
-    font-size: 1.3em;
+    font-size: 1.1em;
 }
-.bottom-p a{
+
+.bottom-p a {
     color: black;
     text-decoration: none;
 }
+
 .google-signup-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    height: 50px;
+    gap: 6px;
+    height: 40px;
     width: 100%;
-    margin-top: 10px;
-    padding: 12px;
-    background-color: #db4437; /* Google red */
+    margin-top: 8px;
+    padding: 10px;
+    background-color: #db4437;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .google-signup-button:hover {
-    background-color: #c33d2e; /* Darker Google red */
+    background-color: #c33d2e;
 }
 
 .google-signup-button:active {
@@ -115,60 +112,55 @@
 }
 
 .google-icon {
-    width: 24px;
-    height: 24px;
-}
-/* Toastify container styles */
-.Toastify__toast-container {
-    width: 500px;
-    max-width: 500px;
-    font-family: Arial, sans-serif;
-    position: fixed; /* Ensure it's fixed to the screen */
-    top: 20px; /* Adjust the distance from the top */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust for perfect horizontal centering */
-    z-index: 9999; /* Ensure it's on top of other content */
+    width: 20px;
+    height: 20px;
 }
 
-/* Toast notification styles */
+.Toastify__toast-container {
+    width: 400px;
+    max-width: 400px;
+    font-family: Arial, sans-serif;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
 .Toastify__toast {
     border-radius: 5px;
-    padding: 16px 24px;
-    font-size: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Success toast styles */
 .Toastify__toast--success {
     background-color: white;
     color: green;
 }
 
 .Toastify__toast--success .Toastify__progress-bar {
-    background: #76ff03; /* Green progress bar */
+    background: #76ff03;
 }
 
-/* Error toast styles */
 .Toastify__toast--error {
     background-color: white;
     color: #f44336;
 }
 
 .Toastify__toast--error .Toastify__progress-bar {
-    background: #f44336; /* Red progress bar */
+    background: #f44336;
 }
 
-/* Warning toast styles */
 .Toastify__toast--warning {
     background-color: white;
     color: #ffa726;
 }
 
 .Toastify__toast--warning .Toastify__progress-bar {
-    background: #ffa726; /* Yellow progress bar */
+    background: #ffa726;
 }
 
-/* Close button styles */
 .Toastify__close-button {
     color: black;
     opacity: 0.8;
@@ -178,9 +170,7 @@
     opacity: 1;
 }
 
-/* Progress bar styles */
 .Toastify__progress-bar {
     height: 4px;
     transition: background 0.3s ease-in-out;
 }
-

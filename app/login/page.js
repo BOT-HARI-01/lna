@@ -1,6 +1,6 @@
 'use client';
 import { useState } from "react";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -111,7 +111,7 @@ export default function Login() {
             <button type="submit" className="submit-button">
               Login
             </button>
-            <p className="text">or</p>
+            <p className="text"></p>
             <div className="social-signup">
               <button
                 type="button"

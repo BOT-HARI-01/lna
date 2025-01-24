@@ -1,4 +1,4 @@
-import './about.css';
+import './about.module.css';
 export default function About() {
     return (
         <div className="aboutContainer">
