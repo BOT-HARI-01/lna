@@ -11,8 +11,6 @@ export default function ComponentContainer() {
     const loadref = useRef(false);
     const containerRef = useRef(null);
 
-    // const blogurl = "https://medium.com/@loseheart110/pros-and-cons-of-artificial-intelligence-b8b9d01de85d";
-
     // Function used to initially fetch the data regarding to the user initially when the page is loaded.
     useEffect(() => {
         const userPreferredTags = ['entrepreneurship', 'astronomy'];
@@ -64,11 +62,11 @@ export default function ComponentContainer() {
     // this function handles the scrolling of the page of the page is scrolled then the function loadmore is called this fetches the new links agein .
     useEffect(() => {
         const container = containerRef.current;
-        if(!container) return;
+        if (!container) return;
         const handleScroll = () => {
 
             if (loadref.current || !container) return;
-            const scrollTop = Math.round(containerRef.current.scrollTop); 
+            const scrollTop = Math.round(containerRef.current.scrollTop);
             const scrollHeight = containerRef.current.scrollHeight;
             const clientHeight = containerRef.current.clientHeight;
             const isAtBottom = scrollHeight - scrollTop === clientHeight;
@@ -92,7 +90,7 @@ export default function ComponentContainer() {
     }, []);
 
     return (
-        <div className={Styles.container}  ref={containerRef} style={{overflowY: 'scroll' }}>
+        <div className={Styles.container} ref={containerRef} style={{ overflowY: 'scroll' }}>
             {/* <h1>Main Content Area</h1> */}
             {/* <p>This is where the main content is displayed, inside a rounded container.</p> */}
             <div className="row">
@@ -109,30 +107,7 @@ export default function ComponentContainer() {
                 ) : (
                     <p>Loading...</p>
                 )}
-                {/* {cardData ? (
-          <Card
-            src={cardData.src}
-            title={cardData.title}
-            content={cardData.content}
-            link={cardData.link}
-          />
-        ) : (
-          <p>Loading...</p> 
-        )} */}
-                {/* <Card
-          src ="https://miro.medium.com/v2/resize:fit:640/format:webp/1*YUIhHmZyuEn92w2azqpfXg.jpeg"
-          title={'eewewe'}
-          content={'askjdjb asgdk'}
-          link={"https://medium.com/@loseheart110/pros-and-cons-of-artificial-intelligence-b8b9d01de85d"}
-        /> */}
             </div>
         </div>
     );
-    // return(
-    //     <div className={Styles.container}>
-    //                      <h1>Main Content Area</h1>
-    //                      <p>This is where the main content is displayed, inside a rounded container.</p>
-    //                      {/* <div style={{ height: '150vh' }}></div> */}
-    //     </div>
-    // )
 }

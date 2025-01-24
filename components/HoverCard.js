@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Image from "next/image";
-import Link from "next/link";
-
+import Styles from './card.module.css'
 const HoverCard = ({ src, title, content, link }) => {
   const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
   const [isSaved, setIsSaved] = useState(false); // State to track if the post is saved
@@ -34,20 +33,19 @@ const HoverCard = ({ src, title, content, link }) => {
   return (
     <div>
       {/* Small Card */}
-      <div className="card my-12" style={{ width: "25rem", cursor: "pointer" }} onClick={openModal}>
-        <div className="card-body">
-          <Image className="card-img-top" src={`http://localhost:3001/proxy_image?url=${encodeURIComponent(src)}`} alt="Card img cap" width={150} height={200} />
-          <h5 className="card-title" style={{ color: 'black', fontSize: '1.2rem', fontWeight: 'bold' }}>{title}</h5>
-          {/* <p className="card-text" style={{ color: 'gray' }}>{content}</p> */}
+      <div className="card my-20"  onClick={openModal}>
+        <div className={Styles.cardBody}>
+          <Image className={Styles.cardImgTop} src={`http://localhost:3001/proxy_image?url=${encodeURIComponent(src)}`} alt="Card img cap" width={150} height={200} />
+          <h5 className="card-title" style={{ color: 'black', padding: '5px',fontSize: '1.2rem', fontWeight: 'bold' }}>{title}</h5>
         </div>
       </div>
 
       {/*Large Card */}
       {isModalOpen && (
-        <div className="modal-overlay" style={styles.modalOverlay} onClick={closeModal}>
-          <div className="modal-content" style={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <Image className="card-img-top" src={`http://localhost:3001/proxy_image?url=${encodeURIComponent(src)}`} alt="Card img cap" width={400} height={500} />
-            <div className="card-body">
+        <div className={Styles.modalOverlay} onClick={closeModal}>
+          <div className={Styles.modalContent} onClick={(e) => e.stopPropagation()}>
+            <Image className={Styles.cardImgExp} src={`http://localhost:3001/proxy_image?url=${encodeURIComponent(src)}`} alt="Card img cap" width={400} height={500} />
+            <div className={Styles.cardBody}>
               <h5 className="card-title" style={{ color: 'black', fontSize: '2rem', fontWeight: 'bold' }}>{title}</h5>
               <p className="card-text" style={{ color: 'gray', fontSize: '1rem' }}>{content}</p>
 
@@ -66,36 +64,6 @@ const HoverCard = ({ src, title, content, link }) => {
       )}
     </div>
   );
-};
-
-const styles = {
-  modalOverlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1,
-  },
-  modalContent: {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '10px',
-    maxWidth: '600px',
-    width: '80%',
-    zIndex: 10,
-    position: 'relative',
-  }
-};
-const hoverCardStyle = {
-  ':hover': {
-    transform: 'scale(1.05)', // Slightly enlarge the card
-    boxShadow: '0 8px 12px rgba(0, 0, 0, 0.2)', // Stronger shadow on hover
-  }
-};
+}
 
 export default HoverCard;

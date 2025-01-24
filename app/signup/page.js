@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import { signIn } from 'next-auth';
+import { signIn } from 'next-auth/react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './signup.css'

@@ -13,11 +13,9 @@
 
         //retieving the users preferences fromt local storage
         useEffect(()=>{
-
         })
         const onTagSelection = (tag) =>{[
             // const updatedTag = [...selectedTags,tag];
-
         ]}
         return (
             <div className='theContainer'>
