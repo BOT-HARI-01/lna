@@ -7,7 +7,6 @@ import { useRouter } from "next/navigation";
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from '../contexts/AuthContext';
 import { toast, ToastContainer } from 'react-toastify';
-// import encrypter from '../encrypter';
 
 export default function Login() {
   const [username, setUsername] = useState("");

@@ -27,3 +27,10 @@ The problem with fetching all the data i.e the articles
     now the browesr opens for a certain time and fetches the tags within the time limit and closers
         THis causes not loading of all the tags -> Just a little change in the js Code may be for loop to make the calls recursively may change it but the overhead of opening the browser at each call. -> will do something about it.
     The data from the 2 api's is not being used, fix that. 
+
+Handling the save for the posts.
+
+Creating the user profile page displaying
+    user details, prefs, save posts
+
+Adding the post sharing button -> do it if you like to` (if yes make changes in HoverCard file)

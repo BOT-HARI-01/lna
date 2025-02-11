@@ -22,12 +22,10 @@ export default function Header() {
 
     return (
         <div className={Styles.headerDiv}>
-            {/* <div className={Styles.curved}></div> */}
             <aside className={Styles.sidebar}>
                 <div className={Styles.verticalButtons}>
                     <Link href='/selectTags' className={activeLnk === 'tags' ? Styles.active : ''} onClick={() => handleActive('tags')}>Tags</Link>
                     <Link href='/links' className={activeLnk === 'links' ? Styles.active : ''} onClick={() => handleActive('links')}>Links</Link>
-                    {/* <Link href='/signup' className={activeLnk === 'signup' ? Styles.active :''} onClick={() => handleActive('signup')}>Sign up</Link> */}
                 </div>
             </aside>
             <header className={Styles.header}>
