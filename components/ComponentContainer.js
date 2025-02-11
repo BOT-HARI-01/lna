@@ -1,45 +1,64 @@
-'use client'
+'use client';
 import Styles from './Container.module.css';
-import { useState, useEffect, useRef } from "react";
-import fetchBlog from "../app/api/extract_link";
-import fetchLinks from "../app/api/links_Fetch";
-import HoverCard from "@/components/HoverCard";
+import { useState, useEffect, useRef } from 'react';
+import fetchBlog from '../app/api/extract_link';
+import fetchLinks from '../app/api/links_Fetch';
+import HoverCard from '@/components/HoverCard';
+
 export default function ComponentContainer() {
     const [siteLinks, setSiteLinks] = useState([]);
     const [cardData, setCardData] = useState([]);
     const loadedLinks = useRef(new Set());
     const loadref = useRef(false);
     const containerRef = useRef(null);
+    // const [isScrollable, setIsScrollable] = useState(false); 
+    const [status, setStatus] = useState(null);
+    const [userTags, setUserTags] = useState([]);
 
-    // Function used to initially fetch the data regarding to the user initially when the page is loaded.
+    // console.log(typeof defaultTags);
     useEffect(() => {
-        const userPreferredTags = ['entrepreneurship', 'astronomy'];
-        const loadLinks = async () => {
-            try {
-                const data = await fetchLinks(userPreferredTags);
-                console.log("fetchLinks response:", data);
-                setSiteLinks(data); // Store grouped links
-            } catch (error) {
-                console.error("Error fetching links:", error);
+        if (typeof window !== 'undefined') {
+            const defaultTags = ['entrepreneurship', 'journaling', 'investing', 'love', 'management'];
+            const storedStatus = localStorage.getItem('status');
+            setStatus(storedStatus);
+            const usrPrefs = JSON.parse(localStorage.getItem('user'));
+            if (usrPrefs && usrPrefs.preferences.length >= 1) {
+                setUserTags(usrPrefs.preferences);
+            } else {
+                setUserTags(defaultTags);
             }
-        };
-
-        loadLinks();
+        }
     }, []);
 
-    // After fetching the links the cards has to be loaded so the function iterates through the sitelinks and calls the fetchblog
-    // which extracts the links and return link, image, title, content
-    // A list is made to store all teh data of the cards that are extracted and use later to prepare the card for display
+    // Fetch initial site links
     useEffect(() => {
-        // if (siteLinks.length === 0) return;
+        // const userPreferredTags = ['entrepreneurship', 'astronomy'];
+
+        if (userTags && userTags.length > 0) {
+            const loadLinks = async () => {
+                try {
+                    const data = await fetchLinks(userTags);
+                    // console.log("user tags in comp"+userTags);
+                    setSiteLinks(data); // Store site links
+                } catch (error) {
+                    console.error('Error fetching links:', error);
+                }
+            };
+            console.log(userTags);
+            loadLinks();
+        }
+
+    }, [userTags]);
+
+    // Fetch and populate card data
+    useEffect(() => {
         const loadcard = async () => {
-            const allcards = [];
-            for (let i = 0; i < siteLinks.length; i++) {
-                const link = siteLinks[i];
+            for (const link of siteLinks) {
                 if (loadedLinks.current.has(link)) continue;
 
                 loadedLinks.current.add(link);
                 const data = await fetchBlog(link);
+
                 if (data) {
                     const newcard = {
                         src: data.image_url,
@@ -47,52 +66,76 @@ export default function ComponentContainer() {
                         content: data.content,
                         link: link,
                     };
-                    console.log(newcard);
-                    setCardData(prevcards => [...prevcards, newcard]);
+
+                    setCardData((prevcards) => [...prevcards, newcard]);
                 }
             }
+            // setIsScrollable(true);
         };
 
-        loadcard();
-    }, [siteLinks]);//iterates throught the end of site links
+        if (siteLinks.length > 0) {
+            loadcard();
+        }
+    }, [siteLinks]);
 
-    // use ref is used so that the values can be mutable here can track the loading and the scrolling of the page.
-    // using the state variables causes the loading where as the ref takes out the problem of re-rendering.
-
-    // this function handles the scrolling of the page of the page is scrolled then the function loadmore is called this fetches the new links agein .
+    // Infinite scrolling logic
     useEffect(() => {
+
+        if (!status || status === '0') {
+            return;
+        }
+
         const container = containerRef.current;
         if (!container) return;
-        const handleScroll = () => {
 
+        const handleScroll = () => {
             if (loadref.current || !container) return;
-            const scrollTop = Math.round(containerRef.current.scrollTop);
-            const scrollHeight = containerRef.current.scrollHeight;
-            const clientHeight = containerRef.current.clientHeight;
-            const isAtBottom = scrollHeight - scrollTop === clientHeight;
+
+            const scrollTop = Math.round(container.scrollTop);
+            const scrollHeight = container.scrollHeight;
+            const clientHeight = container.clientHeight;
+            const offset = 5;
+            // console.log("scroll Top", scrollTop ,'client height',clientHeight,'scroll height',scrollHeight);
+            const isAtBottom = scrollHeight - scrollTop <= clientHeight + offset;
+            // const offset = 2; 
+            // const isAtBottom = Math.abs(scrollHeight - scrollTop - clientHeight) <= offset;
             if (isAtBottom) {
                 loadref.current = true;
+                // const userPreferredTags2 = ['journaling','blockchain','motherhood'];
                 const loadMore = async () => {
-                    const newLinks = await fetchLinks('python');
-                    setSiteLinks(prevlinks => {
-                        const unqlinks = newLinks.filter(links => !prevlinks.includes(links));
+                    const newLinks = await fetchLinks(userTags);
+                    setSiteLinks((prevlinks) => {
+                        const unqlinks = newLinks.filter((link) => !prevlinks.includes(link));
                         return [...prevlinks, ...unqlinks];
                     });
                     loadref.current = false;
                 };
+
                 loadMore();
             }
         };
-        container.addEventListener('scroll', handleScroll);
-        return () => {
-            container.removeEventListener("scroll", handleScroll);
+
+        const handleResize = () => {
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(() => {
+                if (status !== '0' && status !== null) handleScroll();
+            }, 200);
         };
-    }, []);
+
+        container.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleResize);
+        return () => {
+            container.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleResize);
+        };
+    }, [userTags, status]);
 
     return (
-        <div className={Styles.container} ref={containerRef} style={{ overflowY: 'scroll' }}>
-            {/* <h1>Main Content Area</h1> */}
-            {/* <p>This is where the main content is displayed, inside a rounded container.</p> */}
+        <div
+            className={Styles.container}
+            ref={containerRef}
+            style={{ overflowY: 'scroll' }}
+        >
             <div className="row">
                 {cardData.length > 0 ? (
                     cardData.map((card, index) => (

@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 
 export async function POST(request) {
   const { username, password } = await request.json();
-    console.log(username + " " + password);
   if (!username || !password) {
     return new Response(
       JSON.stringify({ message: "Both username and password are required." }),
@@ -17,7 +16,6 @@ export async function POST(request) {
     await ConnetToDb();
 
     const user = await User.findOne({ username });
-    console.log(user);
     if (!user) {
       return new Response(
         JSON.stringify({ message: "Invalid credentials" }),
@@ -26,7 +24,6 @@ export async function POST(request) {
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    // console.log(isPasswordValid);
     if (!isPasswordValid) {
       return new Response(
         JSON.stringify({ message: "Invalid credentials" }),
@@ -36,6 +33,7 @@ export async function POST(request) {
     
     const userLoad = {
       username,
+      preferences : user.preferences,
     }
 
     const token = jwt.sign(userLoad,process.env.JWT_SECRET,{

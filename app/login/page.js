@@ -1,14 +1,19 @@
 'use client';
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import './login.css';
+import jwt from 'jsonwebtoken';
+import { useState } from "react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../contexts/AuthContext';
+import { toast, ToastContainer } from 'react-toastify';
+// import encrypter from '../encrypter';
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const {logIn} = useAuth();
 
   const handleGoogleSignIn = async () => {
     try {
@@ -36,19 +41,17 @@ export default function Login() {
           body: JSON.stringify({ username, password }),
         });
 
-
         const data = await response.json();
-        // console.log("Here")
-        // console.log(data,"data at login/page")
-
         if (response.ok) {
+          logIn();
+          const decodingToken = jwt.decode(data.token);
+          localStorage.setItem('user',JSON.stringify(decodingToken));
           toast.success("Login successful! Redirecting...", {
             position: "top-center",
             autoClose: 3000,
           });
-          setTimeout(() => router.push('/about'), 3000);
+          setTimeout(() => router.push('/'), 3000);
         } else {
-          // const error = await response.json();
           // Error toast notification
           toast.error(data.message || 'Invalid credentials', {
             position: "top-center",
@@ -74,7 +77,7 @@ export default function Login() {
   return (
     <div className="theContainer">
       {/* Toast container for displaying toast notifications */}
-      <ToastContainer />
+      <ToastContainer/>
 
       <div className="login-container">
         <div className="login-box">

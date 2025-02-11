@@ -3,7 +3,7 @@ import User from "@/models/users_db";
 import bcrypt from 'bcrypt';
 
 export async function POST(request) {
-    const { username, email, password } = await request.json();
+const { username, email, password } = await request.json();
 
     if (!username || !email || !password) {
         return new Response(JSON.stringify({ message: "All fields are required." }), { status: 400 });
@@ -12,8 +12,6 @@ export async function POST(request) {
     try {
         await ConnetToDb();
         const existingUser = await User.findOne({username});
-        console.log("ewwwwwwww");
-        console.log(existingUser);
         const existingUserMail = await User.findOne({ email });
         if (existingUserMail && existingUser) {
             return new Response(JSON.stringify({ message: "User already exists" }), { status: 400 });
@@ -32,6 +30,7 @@ export async function POST(request) {
             username,
             email,
             password: hashedPassword,
+            preferences : [],
         });
 
 

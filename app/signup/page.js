@@ -10,8 +10,10 @@ export default function SignupPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [usrnmerr, setUsrerr] = useState(null);
   const [passerr, setPasserr] = useState(null);
+  const [confirmPassErr, setConfirmPassErr] = useState(null);
   const router = useRouter();
   const validateUsername = (username) => {
     return username.length >= 5 && username.length <= 15;
@@ -26,7 +28,7 @@ export default function SignupPage() {
 
     setUsrerr(null);
     setPasserr(null);
-
+    setConfirmPassErr(null);
     if (!validateUsername(username)) {
       setUsrerr('Username must be between 5 and 15 characters.');
       return;
@@ -39,6 +41,10 @@ export default function SignupPage() {
       return;
     }
 
+    if (password !== confirmPassword) {
+      setConfirmPassErr('Passwords do not match.');
+      return;
+    }
     try {
       const res = await fetch('/api/Signup', {
         method: 'POST',
@@ -135,8 +141,23 @@ export default function SignupPage() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="input-field"
-              />
+                />
               {passerr ? passerr : " "}
+            </div>
+            <div className="input-group">
+              <label className="input-label" htmlFor="password">
+                Password
+              </label>
+              <input
+                type="password"
+                id="ConfirmPassword"
+                placeholder="Confirm-Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                className="input-field"
+                />
+              {confirmPassErr ? confirmPassErr : " "}
             </div>
             <button type="submit" className="submit-button">
               Sign Up
