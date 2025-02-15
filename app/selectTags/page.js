@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import Styles from './tags.module.css';
+import { SettingsIcon } from 'lucide-react';
 
 const TagSelector = () => {
   const [selectedTags, setSelectedTags] = useState([]);
@@ -8,7 +9,7 @@ const TagSelector = () => {
   const [allTags, setAllTags] = useState([]);
   const [selectedHeadings, setSelectedHeadings] = useState([]);
   const [isHeadingsSelected, setIsHeadingsSelected] = useState(false);
-
+  const [isLoggedin, setIsLoggedIn] = useState(null);
   // Fetch the complete tags data
   useEffect(() => {
     fetch("/tags.json")
@@ -16,14 +17,26 @@ const TagSelector = () => {
       .then((data) => setAllTags(data));
   }, []);
 
-   //used for gettin the previous tags that are already present in session storage  
+  //used for gettin the previous tags that are already present in session storage  
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser && storedUser.preferences) {
-      setSelectedTags(storedUser.preferences);
+    const handleUserLog = () => {
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+      const userStatus = localStorage.getItem('status');
+      console.log(userStatus);
+      if (userStatus === '1') {
+        setIsLoggedIn(1);
+      }
+      if (storedUser && storedUser.preferences) {
+        setSelectedTags(storedUser.preferences);
+        setUserName(storedUser.username);
+      }
     }
-    setUserName(storedUser.username);
-  }, []);
+    handleUserLog();
+    window.addEventListener('storage', handleUserLog);
+    return () => {
+      window.addEventListener('storage', handleUserLog);
+    }
+  }, [isLoggedin]);
 
   // heading selection
   const onHeadingSelection = (heading) => {
@@ -65,21 +78,24 @@ const TagSelector = () => {
 
   return (
     <div className='theContainer'>
-      <h2>Select at least 3 categories</h2>
-      <div className={Styles.headingSelection}>
-        {allTags.map((category, index) => (
-          <div key={index}>
-            <button
-              onClick={() => onHeadingSelection(category.heading)}
-              className={selectedHeadings.includes(category.heading) ? Styles.headingSelected : Styles.headingButton}
-            >
-              {category.heading}
-            </button>
+      {isLoggedin === 1 && (
+        <div>
+          <h2>Select at least 3 categories</h2>
+          <div className={Styles.headingSelection}>
+            {allTags.map((category, index) => (
+              <div key={index}>
+                <button
+                  onClick={() => onHeadingSelection(category.heading)}
+                  className={selectedHeadings.includes(category.heading) ? Styles.headingSelected : Styles.headingButton}
+                >
+                  {category.heading}
+                </button>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      {/* {isHeadingsSelected && ( */}
+        </div>
+      )}
+      {isLoggedin === 1 && (
         <div>
           <h3>Choose tags from the selected categories</h3>
           {allTags.map((category, index) => (
@@ -101,8 +117,9 @@ const TagSelector = () => {
             )
           ))}
         </div>
-      {/* )} */}
+      )}
     </div>
+
   );
 };
 
