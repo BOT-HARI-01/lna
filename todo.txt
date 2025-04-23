@@ -1,0 +1,44 @@
+22/1/25
+currently the login is done & without login still the user can access the home page and see the content -- This is what we do.
+now the Db should be implemented to store the login details when logged in google -- (not done) | even normal login -- (done),
+only google login is done, and no storing in Db -- (true)
+Now when the user logins with the google we are using the sessionProvider to get the username and displaying it, But not when the user does the normal login. We have to implement the auth for user session to keep the user details and then can track his usage and store the prefs in the db when the user changes.
+---
+To implement the home page with a tag selecter page on the top when the user is not logged in and to show the signup button on the side bar.
+
+23/1/25
+Align text in about page. -- done
+Make signup page smaller. -- done
+Align tags page and make them the buttons. --(done) implementation done changes are to be made.
+
+
+8/2/25
+
+The problem is storing usernm and prefs in session storage but after the session even after being loggin in there is no data in session  storage, 
+    sol-  check the local storage for the login status if it is one then always load the username and prefs to session storage -- (done)
+
+    -- Preferences storing is done for normal users login | storing USers prefs n details loggin with google is pending  
+
+change is line 4 : after the user login with google now we redirect to a new page to enter the username and some details, and then store then in the database.
+
+11/2/25
+
+The problem with fetching all the data i.e the articles
+    now the browesr opens for a certain time and fetches the tags within the time limit and closers
+        THis causes not loading of all the tags -> Just a little change in the js Code may be for loop to make the calls recursively may change it but the overhead of opening the browser at each call. -> will do something about it.
+    The data from the 2 api's is not being used, fix that. 
+
+Handling the save for the posts.
+
+Creating the user profile page displaying
+    user details, prefs, save posts
+
+Adding the post sharing button -> do it if you like to` (if yes make changes in HoverCard file)
+
+
+
+
+/*dev: "concurrently \"next dev\" \"wait-on http://localhost:3000 && electron .\"",*/
+
+
+

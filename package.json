@@ -1,0 +1,67 @@
+{
+  "homepage": "https://BOT-HARI-01.github.io/lna",
+  "name": "lna",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "predeploy": "npm run dev",
+    "deploy": "gh-pages -d dev",
+    "electron": "electron .",
+    "electron-dev": "electron .",
+    "package": "electron-builder "
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.3",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.474.0",
+    "mongoose": "^8.9.5",
+    "next": "^15.1.6",
+    "next-auth": "^4.24.11",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.2",
+    "react-toastify": "^11.0.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "concurrently": "^9.1.2",
+    "electron": "^34.2.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9",
+    "eslint-config-next": "15.1.5",
+    "gh-pages": "^6.3.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.17",
+    "wait-on": "^8.0.2"
+  },
+  "files": [
+    "main.js",
+    ".next/**/*",
+    "public/**/*"
+  ],
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "main.js",
+  "keywords": [
+    "nextjs",
+    "electron",
+    "lna"
+  ],
+  "author": "",
+  "license": "ISC",
+  "build": {
+    "appId": "com.example.lna",
+    "productName": "LNA",
+    "win": {
+      "target": "nsis"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/**/*"
+    ]
+  }
+}

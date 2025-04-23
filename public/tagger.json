@@ -1,0 +1,91 @@
+[
+
+    {
+        "heading": "Gaming",
+        "tags": [ "Metaverse", "Nintendo", "Virtual-Reality", "Xbox"]
+    },
+    {
+        "heading": "Movies",
+        "tags": ["Cinema", "Film", "Filmmaking"]
+    },
+    {
+        "heading": "Music",
+        "tags": ["Hip Hop", "Indie", "Metal", "Pop", "Rap", "Rock"]
+    },
+    {
+        "heading": "News",
+        "tags": ["Data-Journalism", "Fake-News", "Journalism", "Misinformation"]
+    },
+    {
+        "heading": "Photography",
+        "tags": ["Cameras", "Photography-Tips", "Photojournalism", "Photos", "Street-Photography"]
+    },
+    {
+        "heading": "Podcasts",
+        "tags": [ "Podcast-Recommendations", "Podcasting", "Podcasting-Tips"]
+    },
+    {
+        "heading": "Economics",
+        "tags": ["Basic-Income", "Debt", "Economy", "Inflation", "Stock-Market"]
+    },
+    {
+        "heading": "Education",
+        "tags": ["Education Reform", "Higher-Education", "PhD", "Teaching"]
+    },
+    {
+        "heading": "Equality",
+        "tags": ["Disability", "Discrimination", "Diversity-In-Tech", "Feminism", "Inclusion", "Racism", "Women's Rights"]
+    },
+    {
+        "heading": "Finance",
+        "tags": ["401(k)", "Investing", "Money", "Philanthropy", "Real-Estate", "Retirement"]
+    },
+    {
+        "heading": "Law",
+        "tags": ["Criminal-Justice", "Law-School", "Legal-Tech", "Social-Justice", "Supreme-Court"]
+    },
+    {
+        "heading": "Transportation",
+        "tags": ["Logistics", "Public-Transit", "Self-Driving Cars", "Trucking", "Urban-Planning"]
+    },
+    {
+        "heading": "Science",
+        "tags": ["Archaeology", "Astronomy", "Astrophysics", "Biotechnology", "Chemistry", "Ecology", "Genetics", "Geology", "Medicine", "Neuroscience", "Physics", "Psychology", "Space"]
+    },
+    {
+        "heading": "Mathematics",
+        "tags": ["Algebra", "Calculus", "Geometry", "Probability", "Statistics"]
+    },
+    {
+        "heading": "Philosophy",
+        "tags": ["Atheism", "Epistemology", "Ethics", "Existentialism", "Metaphysics", "Morality", "Philosophy-Of-Mind", "Stoicism"]
+    },
+    {
+        "heading": "Religion",
+        "tags": ["Buddhism", "Christianity", "Hinduism", "Islam", "Judaism", "Zen"]
+    },
+    {
+        "heading": "Spirituality",
+        "tags": ["Astrology", "Energy Healing", "Horoscopes", "Mysticism", "Reiki"]
+    },
+    {
+        "heading": "Cultural Studies",
+        "tags": ["Ancient-History", "Anthropology", "Cultural-Heritage", "Digital-Life", "History", "Museums", "Sociology", "Tradition"]
+    },
+    {
+        "heading": "Fashion",
+        "tags": ["Clothing", "Fashion Design", "Fashion Trends", "Shoes", "Sneakers", "Style"]
+    },
+    {
+        "heading": "Sports",
+        "tags": ["Baseball", "Basketball", "Football", "NBA", "NFL", "Premier-League", "Soccer", "World-Cup"]
+    },
+    {
+        "heading": "Nature",
+        "tags": ["Birding", "Camping", "Climate-Change", "Conservation", "Hiking", "Sustainability", "Wildlife"]
+    },
+    {
+        "heading": "Travel",
+        "tags": ["Tourism", "Travel-Tips", "Travel-Writing", "Vacation", "Vanlife"]
+    }
+]
