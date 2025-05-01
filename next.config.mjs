@@ -18,6 +18,11 @@ const nextConfig = {
           pathname: "/**",  // Matches any path under the domain
         },
         {
+          protocol: "https",
+          hostname: "proxy-lna.onrender.com",
+          pathname: "/proxy_image",
+      },          
+        {
           protocol: "http",
           hostname: "localhost",
           port:"3001",
